@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:dynamic_color/dynamic_color.dart';
+import 'package:postalhub_checkers_tools/src/navigator/navigator_services.dart';
+import 'package:postalhub_checkers_tools/src/postalhub_ui.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,21 +12,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return DynamicColorBuilder(builder: (lightDynamic, darkDynamic) {
+      return MaterialApp(
+          theme: ThemeData(
+            colorScheme: lightDynamic ?? lightColorScheme,
+            useMaterial3: true,
+            fontFamily: 'GoogleSans',
+          ),
+          darkTheme: ThemeData(
+            colorScheme: darkDynamic ?? darkColorScheme,
+            useMaterial3: true,
+            fontFamily: 'GoogleSans',
+          ),
+          themeMode: ThemeMode.system,
+          debugShowCheckedModeBanner: false,
+          home: const NavigatorServices());
+    });
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -42,8 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Text("Postal Hub Inv Tools"),
+        elevation: 0,
+        scrolledUnderElevation: 0,
       ),
       body: Center(
         child: Column(
