@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:postalhub_checkers_tools/src/navigator/navigator_services.dart';
 import 'package:postalhub_checkers_tools/src/postalhub_ui.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -16,13 +20,13 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
           theme: ThemeData(
             colorScheme: lightDynamic ?? lightColorScheme,
-            useMaterial3: true,
-            fontFamily: 'GoogleSans',
+            // useMaterial3: true,
+            //  fontFamily: 'GoogleSans',
           ),
           darkTheme: ThemeData(
             colorScheme: darkDynamic ?? darkColorScheme,
-            useMaterial3: true,
-            fontFamily: 'GoogleSans',
+            // useMaterial3: true,
+            // fontFamily: 'GoogleSans',
           ),
           themeMode: ThemeMode.system,
           debugShowCheckedModeBanner: false,

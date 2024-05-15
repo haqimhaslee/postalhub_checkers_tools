@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"postalhub","appId":"1:955163893298:android:7c00a8f4e9d0863d93e62b","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"postalhub","configurations":{"android":"1:955163893298:android:7c00a8f4e9d0863d93e62b","ios":"1:955163893298:ios:47671c2172757e7693e62b"}}}}}}
